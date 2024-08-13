@@ -14,7 +14,7 @@ function createAndWriteOutput(operator, resultBeforCalc, calcNumber) {
     outputResult(currentResult, calcDescription); // from vender file
 }
 
-function writeToLog(
+function writeToLog (
     operationIdentifier,
     prevResult,
     operationNumber,
@@ -27,26 +27,37 @@ function writeToLog(
         result: newResult
     };
     logEntries.push(logEntry);
+    create
     console.log(logEntries)
 }
 
-function add () {
-    const enteredNumber = getUserNumberInput() //+userInput.value; => parseInt의 축약형
+function calculateResult (calculationType) {
+    const enteredNumber = getUserNumberInput()
     const initialResult = currentResult;
-    currentResult += enteredNumber;
+    let mathOperator;
+
+    if (calculationType === 'add') {
+        currentResult += enteredNumber;
+        mathOperator = '+';
+    } else {
+        currentResult -= enteredNumber;
+        mathOperator = '-';
+    }
+
     createAndWriteOutput('+', initialResult, enteredNumber)
-    writeToLog('ADD', initialResult, enteredNumber, currentResult)
+    writeToLog(calculationType, initialResult, enteredNumber, currentResult)
 }
 
-function subtract() {
-    const enteredNumber = getUserNumberInput() 
-    const initialResult = currentResult;
-    currentResult -= enteredNumber;
-    createAndWriteOutput('-', initialResult, enteredNumber)
-    writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult)
+
+function add () {
+    calculateResult('ADD')
 }
 
-function multiply() {
+function subtract () {
+    calculateResult('SUBTRACT')
+}
+
+function multiply () {
     const enteredNumber = getUserNumberInput() 
     const initialResult = currentResult;
     currentResult *= enteredNumber;
@@ -54,7 +65,7 @@ function multiply() {
     writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult)
 }
 
-function divide() {
+function divide () {
     const enteredNumber = getUserNumberInput() 
     const initialResult = currentResult;
     currentResult /= enteredNumber;
