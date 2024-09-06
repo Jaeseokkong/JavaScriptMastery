@@ -223,6 +223,12 @@ function printLogHandler() {
   // for (let i = 0; i < battleLog.length; i++) {
   //   console.log(battleLog[i])
   // }
+  let j = 0;
+  while (j < 3) {
+    console.log('----------')
+    j++;
+  }
+
   let i = 0;
   for (const logEntry of battleLog) {
     console.log(`#${i}`)
