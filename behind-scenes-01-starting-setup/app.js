@@ -17,8 +17,10 @@
 // greet();
 // var userName = 'Max';
 // var userName = 'Manuel' //재선언 가능
+'use strict';
 
-let userName = 'Max';
+const userName = 'Max';
+var undefined = 5;
 //let userName = 'zzz' // 재선언 불가능
 
 console.log(userName);
