@@ -13,8 +13,8 @@ let gameIsRunning = false;
 const getPlayerChoice = () => {
     const selection = prompt(`${ROCK}, ${PAPER} OR ${SCISSORS} `, '').toUpperCase();
 
-    if (selection !== ROCK && 
-        selection !== PAPER && 
+    if (selection !== ROCK &&
+        selection !== PAPER &&
         selection !== SCISSORS
     ) {
         alert(`Invalid choice! We chose ${DEFAULT_USER_CHOICE} for you!`);
@@ -34,26 +34,26 @@ const getComputerChoice = () => {
     }
 };
 
-const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) => 
-    cChoice === pChoice 
-        ? RESULT_DRAW 
-        : (cChoice === ROCK && pChoice === PAPER) || 
-          (cChoice === PAPER && pChoice === SCISSORS) || 
-          (cChoice === SCISSORS && pChoice === ROCK) 
-        ? RESULT_PLAYER_WINS 
-        : RESULT_COMPUTER_WINS;
+const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) =>
+    cChoice === pChoice
+        ? RESULT_DRAW
+        : (cChoice === ROCK && pChoice === PAPER) ||
+            (cChoice === PAPER && pChoice === SCISSORS) ||
+            (cChoice === SCISSORS && pChoice === ROCK)
+            ? RESULT_PLAYER_WINS
+            : RESULT_COMPUTER_WINS;
 
-    // if (cChoice === pChoice) {
-    //     return RESULT_DRAW;
-    // } else if (
-    //     cChoice === ROCK && pChoice === PAPER || 
-    //     cChoice === PAPER && pChoice === SCISSORS || 
-    //     cChoice === SCISSORS && pChoice === ROCK
-    // ) {
-    //     return RESULT_PLAYER_WINS;
-    // } else {
-    //     return RESULT_COMPUTER_WINS;
-    // }
+// if (cChoice === pChoice) {
+//     return RESULT_DRAW;
+// } else if (
+//     cChoice === ROCK && pChoice === PAPER || 
+//     cChoice === PAPER && pChoice === SCISSORS || 
+//     cChoice === SCISSORS && pChoice === ROCK
+// ) {
+//     return RESULT_PLAYER_WINS;
+// } else {
+//     return RESULT_COMPUTER_WINS;
+// }
 
 startGameBtn.addEventListener('click', () => {
     if (gameIsRunning) {
@@ -80,3 +80,39 @@ startGameBtn.addEventListener('click', () => {
     alert(message);
     gameIsRunning = false;
 });
+
+// not related to gaeme
+
+const combine = (resultHandler, operation, ...numbers) => {
+    const valiationNumber = (number) => {
+        return isNaN(number) ? 0 : number;
+    }
+
+    let sum = 0;
+    for (const num of numbers) {
+        if (operation === 'ADD') {
+            sum += valiationNumber(num)
+        } else {
+            sum -= valiationNumber(num)
+        }
+
+    }
+    return resultHandler(sum);
+};
+
+// const subtractUp = function(resultHandler, ...numbers) {
+//     let sum = 0;
+//     for (const num of numbers) {
+//         sum -= num
+//     }
+//     return resultHandler(sum, 'The result after adding all numbers is');
+// };
+
+const showResult = (messageText, result) => {
+    console.log
+    alert(messageText + ' ' + result);
+}
+
+combine(showResult.bind(this, 'The result after adding all numbers is:'), 'ADD', 1, 5, 'fdsa', -3, 6, 10); // .bind 새로운 함수를 생성해준다. (즉시 실행되지 않은ㄴ 함수)
+combine(showResult.bind(this, 'The result after adding all numbers is:'), 'ADD', 1, 5, 10 - 3, 4, 10, 25, 88);
+combine(showResult.bind(this, 'The result after subtracting all numbers is:'), 'SUBTRACT', 1, 5, 10 - 3, 4, 10, 25, 88);
