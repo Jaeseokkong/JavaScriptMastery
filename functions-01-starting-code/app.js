@@ -109,7 +109,6 @@ const combine = (resultHandler, operation, ...numbers) => {
 // };
 
 const showResult = (messageText, result) => {
-    console.log
     alert(messageText + ' ' + result);
 }
 
